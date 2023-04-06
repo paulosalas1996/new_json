@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Product Table</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+    <main class="table">
+        <section class="table__header text-center mt-5">
+            <h1 class="my-heading mt-5 mb-5"><i class="fas fa-pills"></i> Medicine Catalog</h1>
+        </section>
+        <section class="table__body">
+            <div>
+                <table>
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Stock #</th>
+                            <th scope="col">Generic Name</th>
+                            <th scope="col">Drug Class</th>
+                            <th scope="col">Strength</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="table-group-divider table-dark"></tbody>
+                </table>
+            </div>
+
+            <!-- Include jQuery and Bootstrap JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+            <script>
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "/midterm_project/php/index.php");
+                xmlhttp.send();
+                xmlhttp.onload = function () {
+                    const medicines = JSON.parse(this.responseText);
+                    var tableBody = document.getElementById("table-body");
+                    tableBody.innerHTML = ""; // clear existing rows
+                    for (var i in medicines) {
+                        var row = `<tr>
+            <td>${medicines[i].id}</td>
+            <td>${medicines[i].genericName}</td>
+            <td>${medicines[i].drugClass}</td>
+            <td>${medicines[i].strength}</td>
+            <td>${medicines[i].company}</td>
+            <td>${medicines[i].description}</td>
+          </tr>`;
+                        tableBody.innerHTML += row;
+                    }
+                };
+            </script>
+        </section>
+    </main>
+</body>
+
+</html>
