@@ -19,7 +19,8 @@ Code written by:
 
 body {
     min-height: 100vh;
-    background: url(/salas_new/img/bg.jpg);
+    background: url(/new_json/img/bg.jpg);
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;

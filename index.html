@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Product Table</title>
+    <title>My Medicines Table</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -40,7 +40,7 @@
 
             <script>
                 const xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", "/midterm_project/php/index.php");
+                xmlhttp.open("GET", "/new_json/php/index.php");
                 xmlhttp.send();
                 xmlhttp.onload = function () {
                     const medicines = JSON.parse(this.responseText);
@@ -48,13 +48,13 @@
                     tableBody.innerHTML = ""; // clear existing rows
                     for (var i in medicines) {
                         var row = `<tr>
-            <td>${medicines[i].id}</td>
-            <td>${medicines[i].genericName}</td>
-            <td>${medicines[i].drugClass}</td>
-            <td>${medicines[i].strength}</td>
-            <td>${medicines[i].company}</td>
-            <td>${medicines[i].description}</td>
-          </tr>`;
+                        <td>${medicines[i].id}</td>
+                        <td>${medicines[i].genericName}</td>
+                        <td>${medicines[i].drugClass}</td>
+                        <td>${medicines[i].strength}</td>
+                        <td>${medicines[i].company}</td>
+                        <td>${medicines[i].description}</td>
+                    </tr>`;
                         tableBody.innerHTML += row;
                     }
                 };
