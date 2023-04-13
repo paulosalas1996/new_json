@@ -40,7 +40,7 @@
 
             <script>
                 const xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", "/new_json/php/index.php");
+                xmlhttp.open("GET", "http://localhost/new_json/php/index.php");
                 xmlhttp.send();
                 xmlhttp.onload = function () {
                     const medicines = JSON.parse(this.responseText);
